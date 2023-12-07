@@ -1,0 +1,48 @@
+using System;
+
+class Program
+{
+    static void SelectionSort(int[] arr)
+    {
+        int n = arr.Length;
+
+        for (int i = 0; i < n - 1; i++)
+        {
+            // encontra o índice no menor elemento da array
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++)
+            {
+                if (arr[j] < arr[minIndex])
+                {
+                    minIndex = j;
+                }
+            }
+
+            // troca o elemento menor encontrado com o primeiro elemento que não está ordenado
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
+
+    static void Main()
+    {
+        // Exemplo
+        int[] array = { 64, 25, 12, 22, 11 };
+
+        Console.Write("Array não ordenado: ");
+        PrintArray(array);
+
+        SelectionSort(array);
+
+        Console.Write("Array ordenado: ");
+        PrintArray(array);
+    }
+
+    static void PrintArray(int[] arr)
+    {
+        foreach (int num in arr)
+        {
+            Console.Write(num + " ");
+        }
+        Console.WriteLine();
